@@ -1,0 +1,14 @@
+@mixin mobile {
+    @media (max-width: 450px) {
+        @content;
+    }
+}
+@mixin medium {
+    @media (max-width: 940px) {
+        @content;
+    }
+}
+
+@mixin transition {
+    transition: all 0.2s ease;
+}

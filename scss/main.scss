@@ -1,0 +1,227 @@
+@import "./variable";
+@import "./reset";
+@import "./mixin";
+
+body {
+    position: relative;
+    background-image: url("../images/bg-intro-desktop.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    &::before {
+        width: 100%;
+        height: 100%;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba($red, 0.75);
+        z-index: -1;
+    }
+}
+
+.hold {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.intro {
+    min-height: 100vh;
+    padding: 3rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    &Txt {
+        width: 50%;
+        padding-right: 2rem;
+
+        h1 {
+            max-width: 20ch;
+            font-size: 2.75rem;
+            font-weight: 600;
+            line-height: 1em;
+            color: #fff;
+        }
+
+        p {
+            max-width: 50ch;
+            margin-top: 1rem;
+            color: #fff;
+        }
+    }
+    &Right {
+        max-width: 500px;
+        width: 45%;
+    }
+
+    &Offer {
+        padding: 1em;
+        text-align: center;
+        position: relative;
+        background-color: $blue;
+        color: #fff;
+        border-radius: 10px;
+
+        &::after {
+            width: 100%;
+            height: 100%;
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.5em;
+            z-index: -1;
+            background-color: rgba(#000, 0.15);
+            border-radius: 10px;
+        }
+    }
+
+    &Form {
+        margin-top: 1.5rem;
+        padding: 2.5rem;
+        background-color: #fff;
+        border-radius: 10px;
+        @include transition();
+    }
+
+    &Field {
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        @include transition();
+
+        p {
+            display: none;
+            opacity: 0;
+            margin-top: 0.5em;
+            font-size: 0.75rem;
+            align-self: flex-end;
+            color: $red;
+            @include transition();
+        }
+
+        &Error {
+            .introInput input {
+                border: 2px solid $red;
+
+                &:hover,
+                &:focus {
+                    border: 2px solid $red;
+                }
+            }
+
+            p,
+            & .introInput img {
+                display: block;
+                opacity: 1;
+            }
+        }
+    }
+
+    &Input {
+        position: relative;
+
+        input {
+            width: 100%;
+            height: 100%;
+            padding: 1rem 4rem 1rem 1.75rem;
+            font-weight: 500;
+            border: 1px solid rgba($darkBlue, 0.25);
+            outline: none;
+            border-radius: 5px;
+            @include transition();
+
+            &:hover,
+            &:focus {
+                border-color: rgba($darkBlue, 0.75);
+            }
+        }
+
+        img {
+            display: none;
+            opacity: 0;
+            position: absolute;
+            right: 1.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            @include transition();
+        }
+    }
+
+    &Submit {
+        width: 100%;
+        padding: 1rem 1.75rem;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        position: relative;
+        background-color: $green;
+        color: #fff;
+        border: none;
+        border-bottom: 0.25em solid rgba(#000, 0.15);
+        outline: none;
+        border-radius: 5px;
+    }
+
+    &Terms {
+        margin-top: 1rem;
+        font-size: 0.75rem;
+        text-align: center;
+        color: $grayishBlue;
+
+        span {
+            font-weight: 600;
+            color: $red;
+        }
+    }
+
+    @include medium() {
+        flex-direction: column;
+
+        &Txt {
+            width: 100%;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &Right {
+            width: 100%;
+            margin-top: 2rem;
+        }
+    }
+
+    @include mobile() {
+        &Txt {
+            h1 {
+                font-size: 1.75rem;
+            }
+        }
+
+        &Offer {
+            font-size: 0.9rem;
+        }
+
+        &Form {
+            padding: 1.75rem;
+        }
+
+        &Input {
+            input {
+                padding: 0.75rem 3rem 0.75rem 1rem;
+            }
+
+            img {
+                right: 1rem;
+            }
+        }
+
+        &Submit {
+            padding: 0.75rem 1rem;
+        }
+    }
+}
